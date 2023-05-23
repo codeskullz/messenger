@@ -19,15 +19,19 @@ class Messages extends ComponentBase
 
     public function onSaveMessage()
     {
-        $message = new Message;
+        $message = new Messages();
         $message->subject = post('subject');
         $message->message = post('message');
         $message->save();
 
-        // Eventuele extra acties na het opslaan van het bericht
+        // Eventuele verdere logica of omleiding na het opslaan van het bericht
 
-        \Flash::success('Bericht is succesvol opgeslagen.');
-        trace_log('Bericht opgeslagen: ' . post('subject') . ' - ' . post('message'));
+        // Optioneel: Maak een succesmelding om te tonen aan de gebruiker
+        Flash::success('Bericht succesvol opgeslagen.');
 
+        // Optioneel: Omleiden naar een andere pagina na het opslaan van het bericht
+        // return Redirect::to('success-page');
+
+        trace_log('Model geladen: ' . get_class(new Messages()));
     }
 }
