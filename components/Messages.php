@@ -1,4 +1,4 @@
-<?php namespace Nielsvandendries\Messenger\Components;
+<?php namespace NielsVanDenDries\Messenger\Components;
 
 use Cms\Classes\ComponentBase;
 
@@ -27,5 +27,7 @@ class Messages extends ComponentBase
         // Eventuele extra acties na het opslaan van het bericht
 
         \Flash::success('Bericht is succesvol opgeslagen.');
+        trace_log('Bericht opgeslagen: ' . post('subject') . ' - ' . post('message'));
+
     }
 }

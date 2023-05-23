@@ -1,9 +1,11 @@
+<div>Testinhoud</div>
+
 <div class="messages-component">
     {% flash %}
         <div class="alert alert-success">{{ message }}</div>
     {% endflash %}
 
-    <form method="POST" action="{{ this.url }}">
+    <form method="POST" action="{{ 'messages'|page }}">
         {{ form_token() }}
         <input type="hidden" name="handler" value="onSaveMessage">
 
