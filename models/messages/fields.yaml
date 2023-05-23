@@ -1,0 +1,18 @@
+fields:
+    id:
+        label: Id
+        span: auto
+        type: number
+    created_at:
+        label: 'Created at'
+        span: auto
+        type: datepicker
+    subject:
+        label: Subject
+        span: full
+        type: text
+    message:
+        label: Message
+        span: full
+        size: large
+        type: textarea

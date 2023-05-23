@@ -1,0 +1,10 @@
+plugin:
+    name: 'nielsvandendries.messenger::lang.plugin.name'
+    description: 'nielsvandendries.messenger::lang.plugin.description'
+    author: 'Niels van den Dries'
+    icon: oc-icon-wechat
+    homepage: 'https://nvandendries.nl'
+permissions:
+    manager:
+        tab: 'nielsvandendries.messenger::lang.plugin.name'
+        label: 'Message Manager'
