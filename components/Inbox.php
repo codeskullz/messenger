@@ -71,7 +71,4 @@ class Inbox extends ComponentBase
         Flash::success('Bericht succesvol verwijderd!');
         $this->page['messages'] = $this->getMessages();
     }
-    
-
-
 }
