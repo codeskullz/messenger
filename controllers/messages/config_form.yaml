@@ -1,0 +1,11 @@
+name: Messages
+modelClass: NielsVanDenDries\Messenger\Models\Messages
+form: $/nielsvandendries/messenger/models/messages/fields.yaml
+defaultRedirect: nielsvandendries/messenger/messages
+create:
+    redirect: 'nielsvandendries/messenger/messages/update/:id'
+    redirectClose: nielsvandendries/messenger/messages
+update:
+    redirect: nielsvandendries/messenger/messages
+    redirectClose: nielsvandendries/messenger/messages
+preview: {  }

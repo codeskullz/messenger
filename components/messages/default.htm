@@ -1,13 +1,20 @@
-<div>Testinhoud</div>
+<div>
+    <h3>Bericht versturen</h3>
+</div>
 
 <div class="messages-component">
     {% flash %}
-        <div class="alert alert-success">{{ message }}</div>
+    <div class="alert alert-success">{{ message }}</div>
     {% endflash %}
 
     <form method="POST" action="{{ 'messages'|page }}">
         {{ form_token() }}
         <input type="hidden" name="handler" value="onSaveMessage">
+
+        <div class="form-group">
+            <label for="subject">Aan</label>
+            <input type="text" id="subject" name="aan" class="form-control">
+        </div>
 
         <div class="form-group">
             <label for="subject">Onderwerp</label>
@@ -19,6 +26,6 @@
             <textarea id="message" name="message" class="form-control"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Bericht opslaan</button>
+        <button type="submit" class="btn btn-primary">Verzenden...</button>
     </form>
 </div>

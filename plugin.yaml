@@ -8,3 +8,17 @@ permissions:
     manager:
         tab: 'nielsvandendries.messenger::lang.plugin.name'
         label: 'Message Manager'
+navigation:
+    main-menu-item:
+        label: Messenger
+        url: /
+        icon: icon-wechat
+        permissions:
+            - manager
+        sideMenu:
+            side-menu-item:
+                label: Messages
+                url: nielsvandendries/messenger/messages
+                icon: icon-users
+                permissions:
+                    - manager
