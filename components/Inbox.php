@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Facades\Auth;
 use Nielsvandendries\Messenger\Models\Messages;
 use RainLab\User\Models\User;
+use October\Rain\Support\Facades\Flash;
 
 class Inbox extends ComponentBase
 {
@@ -53,22 +54,18 @@ class Inbox extends ComponentBase
         }
     
         $messageId = post('messageId');
-        $message = Messages::find($messageId);
+        $message = Messages::deleteMessage($messageId);
     
         if (!$message) {
-            // Bericht niet gevonden, doe iets (bijv. toon een foutmelding)
+            // Bericht niet verwijderd, doe iets (bijv. toon een foutmelding)
             return;
         }
-    
-        if ($message->recipient_id !== $user->id) {
-            // Huidige gebruiker is niet de ontvanger van het bericht, doe iets (bijv. toon een foutmelding)
-            return;
-        }
-    
-        $message->delete();
     
         // Toon een succesbericht of voer andere acties uit na het verwijderen van het bericht
         Flash::success('Bericht succesvol verwijderd!');
         $this->page['messages'] = $this->getMessages();
+
+        return redirect()->refresh();
     }
+    
 }

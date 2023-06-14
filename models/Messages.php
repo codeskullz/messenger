@@ -20,4 +20,19 @@ class Messages extends Model
      */
     public $rules = [
     ];
+
+    public static function deleteMessage($messageId)
+    {
+        $message = self::find($messageId);
+    
+        if (!$message) {
+            // Bericht niet gevonden, doe iets (bijv. toon een foutmelding)
+            return false;
+        }
+    
+        $message->delete();
+    
+        return true;
+    }
+
 }
