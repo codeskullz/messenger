@@ -3,7 +3,7 @@
 use Cms\Classes\ComponentBase;
 use RainLab\User\Facades\Auth;
 use Nielsvandendries\Messenger\Models\Messages;
-
+use RainLab\User\Models\User;
 
 class Inbox extends ComponentBase
 {
@@ -23,11 +23,18 @@ class Inbox extends ComponentBase
     public function getMessages()
     {
         $user = Auth::getUser();
-
+    
         if ($user) {
-            return Messages::where('recipient_id', $user->id)->get();
+            $messages = Messages::where('recipient_id', $user->id)->get();
+    
+            foreach ($messages as $message) {
+                $sender = User::find($message->sender_id);
+                $message->sender_name = $sender ? $sender->name : 'Onbekende verzender';                
+            }
+    
+            return $messages;
         }
-
+    
         return [];
     }
 
