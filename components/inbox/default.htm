@@ -17,7 +17,10 @@
             {% endif %}
             <a href="" data-request="onDeleteMessage" data-request-data="messageId: {{ message.id }}"
                 data-request-confirm="Are you sure you want to delete this message?"><i class="bi bi-trash3"></i></a>
-            <strong>{{ message.created_at }}</strong> From {{ message.sender_name }} - <i>{{ message.content|raw }}</i>
+            <strong>{{ message.created_at }}</strong> From {{ message.sender_name }} <br> <strong>Message:</strong>
+            <i>{{
+                message.content|raw
+                }}</i>
         </li>
         {% endfor %}
     </ul>
