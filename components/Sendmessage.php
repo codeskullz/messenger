@@ -1,16 +1,18 @@
-<?php namespace NielsVanDenDries\Messenger\Components;
+<?php namespace Nielsvandendries\Messenger\Components;
 
 use Cms\Classes\ComponentBase;
-use Illuminate\Support\Facades\Auth;
+use RainLab\User\Facades\Auth;
 use RainLab\User\Models\User;
+use Nielsvandendries\Messenger\Models\Messages;
+use October\Rain\Support\Facades\Flash;
 
-class Messages extends ComponentBase
+class Sendmessage extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name' => 'Messages Frontend Component',
-            'description' => 'The place where the can add messages'
+            'name' => 'sendmessage Component',
+            'description' => 'No description provided yet...'
         ];
     }
 
@@ -19,34 +21,33 @@ class Messages extends ComponentBase
         return [];
     }
 
-    protected $fillable = ['sender_id', 'recipient_id', 'content'];
-
     public static function createMessage($senderId, $recipientId, $content)
     {
-        $message = new self();
+        $message = new Messages();
         $message->sender_id = $senderId;
         $message->recipient_id = $recipientId;
         $message->content = $content;
         $message->save();
-
+    
         return $message;
-    }
-
-    public function sendMessage()
-    {
-        $recipientId = post('recipient_id');
-        $messageContent = post('message_content');
-
-        $senderId = Auth::getUser()->id;
-
-        $message = Messages::createMessage($senderId, $recipientId, $messageContent);
-
-        Flash::success('Bericht succesvol verzonden!');
     }
 
     public function onRender()
     {
         $this->page['users'] = User::all();
     }
+
+    public function onSendMessage()
+    {
+        $recipientId = post('recipient_id');
+        $messageContent = post('message_content');
+    
+        $senderId = Auth::getUser()->id;
+    
+        $message = self::createMessage($senderId, $recipientId, $messageContent);
+    
+        Flash::success('Bericht succesvol verzonden!');
+    }
+    
 
 }

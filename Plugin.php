@@ -7,7 +7,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'NielsVanDenDries\Messenger\Components\Messages' => 'messages'
+            'NielsVanDenDries\Messenger\Components\Sendmessage' => 'Sendmessage',
+            'NielsVanDenDries\Messenger\Components\Inbox' => 'Inbox'
         ];
     }
 

@@ -3,3 +3,15 @@
 1.0.2:
     - 'Created table nielsvandendries_messenger_'
     - builder_table_create_nielsvandendries_messenger_.php
+1.0.3:
+    - 'Updated table nielsvandendries_messenger_message'
+    - builder_table_update_nielsvandendries_messenger_message.php
+1.0.4:
+    - 'Updated table nielsvandendries_messenger_message'
+    - builder_table_update_nielsvandendries_messenger_message_2.php
+1.0.5:
+    - 'Updated table nielsvandendries_messenger_message'
+    - builder_table_update_nielsvandendries_messenger_message_3.php
+1.0.6:
+    - 'Updated table nielsvandendries_messenger_message'
+    - builder_table_update_nielsvandendries_messenger_message_4.php
