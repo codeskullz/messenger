@@ -1,12 +1,10 @@
 <?php namespace Nielsvandendries\Messenger\Components;
 
 use Cms\Classes\ComponentBase;
+use RainLab\User\Facades\Auth;
+use Nielsvandendries\Messenger\Models\Messages;
 
-/**
- * Inbox Component
- *
- * @link https://docs.octobercms.com/3.x/extend/cms-components.html
- */
+
 class Inbox extends ComponentBase
 {
     public function componentDetails()
@@ -17,11 +15,26 @@ class Inbox extends ComponentBase
         ];
     }
 
-    /**
-     * @link https://docs.octobercms.com/3.x/element/inspector-types.html
-     */
     public function defineProperties()
     {
         return [];
     }
+
+    public function getMessages()
+    {
+        $user = Auth::getUser();
+
+        if ($user) {
+            return Messages::where('recipient_id', $user->id)->get();
+        }
+
+        return [];
+    }
+
+    public function onRender()
+    {
+        $this->page['messages'] = $this->getMessages();
+    }
+
+
 }

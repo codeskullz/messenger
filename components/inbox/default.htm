@@ -1,3 +1,14 @@
-<p>This is the default markup for component inbox</p>
-
-<small>You can delete this file if you want</small>
+{% if messages %}
+{% for message in messages %}
+<div class="card">
+    <div class="card-header">
+        {{ message.created_at }} From {{ message.sender_id }}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ message.content|raw }}</li>
+    </ul>
+</div>
+{% endfor %}
+{% else %}
+<p>Geen berichten gevonden.</p>
+{% endif %}

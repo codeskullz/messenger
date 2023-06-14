@@ -47,6 +47,8 @@ class Sendmessage extends ComponentBase
         $message = self::createMessage($senderId, $recipientId, $messageContent);
     
         Flash::success('Bericht succesvol verzonden!');
+
+        return redirect()->refresh();
     }
     
 
