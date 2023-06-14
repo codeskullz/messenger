@@ -64,5 +64,18 @@ class Inbox extends ComponentBase
 
         return redirect()->refresh();
     }
+
+    public function onReadMessage()
+    {
+        $messageId = post('messageId');
+
+        $message = Messages::find($messageId);
+
+        if ($message) {
+            $message->is_read = true;
+            $message->save();
+        }
+        return redirect()->refresh();
+    }
     
 }

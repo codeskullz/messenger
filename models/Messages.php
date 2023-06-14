@@ -26,7 +26,6 @@ class Messages extends Model
         $message = self::find($messageId);
     
         if (!$message) {
-            // Bericht niet gevonden, doe iets (bijv. toon een foutmelding)
             return false;
         }
     
@@ -34,5 +33,10 @@ class Messages extends Model
     
         return true;
     }
+
+    public $attributes = [
+        'is_read' => 0,
+    ];
+    
 
 }

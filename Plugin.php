@@ -8,7 +8,8 @@ class Plugin extends PluginBase
     {
         return [
             'NielsVanDenDries\Messenger\Components\Sendmessage' => 'Sendmessage',
-            'NielsVanDenDries\Messenger\Components\Inbox' => 'Inbox'
+            'NielsVanDenDries\Messenger\Components\Inbox' => 'Inbox',
+            'NielsVanDenDries\Messenger\Components\Notification' => 'Notification'
         ];
     }
 
