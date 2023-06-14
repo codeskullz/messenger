@@ -1,0 +1,9 @@
+{
+    "name": "nielsvandendries/messenger-plugin",
+    "type": "october-plugin",
+    "description": "Small instant messenger",
+    "require": {
+        "composer/installers": "~1.0",
+        "rainlab/user-plugin": "^2.0"
+    }
+}
