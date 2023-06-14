@@ -13,8 +13,9 @@ class BuilderTableCreateNielsvandendriesMessenger extends Migration
             $table->increments('id')->unsigned();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->string('subject');
-            $table->text('message');
+            $table->string('sender_id');
+            $table->string('recipient_id');
+            $table->text('content');
         });
     }
     
