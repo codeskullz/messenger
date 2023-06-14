@@ -6,6 +6,8 @@
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">{{ message.content|raw }}</li>
+        <li class="list-group-item"><button class="btn btn-danger" data-request="onDeleteMessage"
+                data-request-data="messageId: {{ message.id }}">Verwijderen</button></li>
     </ul>
 </div>
 {% endfor %}

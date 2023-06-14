@@ -43,5 +43,35 @@ class Inbox extends ComponentBase
         $this->page['messages'] = $this->getMessages();
     }
 
+    public function onDeleteMessage()
+    {
+        $user = Auth::getUser();
+    
+        if (!$user) {
+            // Gebruiker is niet ingelogd, doe iets (bijv. redirect naar inlogpagina)
+            return;
+        }
+    
+        $messageId = post('messageId');
+        $message = Messages::find($messageId);
+    
+        if (!$message) {
+            // Bericht niet gevonden, doe iets (bijv. toon een foutmelding)
+            return;
+        }
+    
+        if ($message->recipient_id !== $user->id) {
+            // Huidige gebruiker is niet de ontvanger van het bericht, doe iets (bijv. toon een foutmelding)
+            return;
+        }
+    
+        $message->delete();
+    
+        // Toon een succesbericht of voer andere acties uit na het verwijderen van het bericht
+        Flash::success('Bericht succesvol verwijderd!');
+        $this->page['messages'] = $this->getMessages();
+    }
+    
+
 
 }
