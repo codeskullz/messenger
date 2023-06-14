@@ -49,7 +49,6 @@ class Inbox extends ComponentBase
         $user = Auth::getUser();
     
         if (!$user) {
-            // Gebruiker is niet ingelogd, doe iets (bijv. redirect naar inlogpagina)
             return;
         }
     
@@ -57,11 +56,9 @@ class Inbox extends ComponentBase
         $message = Messages::deleteMessage($messageId);
     
         if (!$message) {
-            // Bericht niet verwijderd, doe iets (bijv. toon een foutmelding)
             return;
         }
     
-        // Toon een succesbericht of voer andere acties uit na het verwijderen van het bericht
         Flash::success('Bericht succesvol verwijderd!');
         $this->page['messages'] = $this->getMessages();
 
