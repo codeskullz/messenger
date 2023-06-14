@@ -11,8 +11,8 @@ class Inbox extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'inbox Component',
-            'description' => 'No description provided yet...'
+            'name' => 'inbox',
+            'description' => 'Your Messages'
         ];
     }
 
@@ -30,7 +30,7 @@ class Inbox extends ComponentBase
     
             foreach ($messages as $message) {
                 $sender = User::find($message->sender_id);
-                $message->sender_name = $sender ? $sender->name : 'Onbekende verzender';                
+                $message->sender_name = $sender ? $sender->name : 'Unknown sender';                
             }
     
             return $messages;
@@ -59,7 +59,7 @@ class Inbox extends ComponentBase
             return;
         }
     
-        Flash::success('Bericht succesvol verwijderd!');
+        Flash::success('Message deleted successfully!');
         $this->page['messages'] = $this->getMessages();
 
         return redirect()->refresh();
