@@ -5,3 +5,5 @@
     - builder_table_create_nielsvandendries_messenger_.php
 1.0.3:
     - 'Translate to english'
+1.0.4:
+    - "Added Notification Component with message counter"
