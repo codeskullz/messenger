@@ -38,5 +38,14 @@ class Messages extends Model
         'is_read' => 0,
     ];
     
+    public static function createMessage($senderId, $recipientId, $content)
+    {
+        $message = new self();
+        $message->sender_id = $senderId;
+        $message->recipient_id = $recipientId;
+        $message->content = $content;
+        $message->save();
 
+        return $message;
+    }
 }

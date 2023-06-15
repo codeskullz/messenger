@@ -77,5 +77,35 @@ class Inbox extends ComponentBase
         }
         return redirect()->refresh();
     }
+
+    public function onSendReply()
+    {
+        $recipientId = post('recipientId');
+        $messageContent = post('messageContent');
+        $senderId = Auth::getUser()->id;
+    
+        Messages::createMessage($senderId, $recipientId, $messageContent);
+    
+        Flash::success('Message successfully sent!');
+        $this->page['modalVisible'] = false;
+    
+        $this->page['messages'] = $this->getMessages();
+        return $this->renderPartial('inbox/default');
+    }
+
+    public function onReplyMessage()
+    {
+        $recipientId = post('recipientId');
+        $messageContent = post('messageContent');
+        $senderId = Auth::getUser()->id;
+    
+        Messages::createMessage($senderId, $recipientId, $messageContent);
+    
+        Flash::success('Message successfully sent!');
+        $this->page['modalVisible'] = false;
+    
+        $this->page['messages'] = $this->getMessages();
+        return $this->renderPartial('inbox/default');
+    }
     
 }
