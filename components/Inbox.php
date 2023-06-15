@@ -18,7 +18,14 @@ class Inbox extends ComponentBase
 
     public function defineProperties()
     {
-        return [];
+        return [
+            'showReplyFields' => [
+                'title' => 'Show answer fields',
+                'description' => 'Toggle on or off to display the answer fields',
+                'type' => 'checkbox',
+                'default' => false,
+            ]
+        ];
     }
 
     public function getMessages()
@@ -42,6 +49,8 @@ class Inbox extends ComponentBase
     public function onRender()
     {
         $this->page['messages'] = $this->getMessages();
+        $this->page['onReplyMessage'] = $this->alias.'::onReplyMessage';
+        $this->page['showReplyFields'] = $this->property('showReplyFields');
     }
 
     public function onDeleteMessage()
@@ -78,34 +87,21 @@ class Inbox extends ComponentBase
         return redirect()->refresh();
     }
 
-    public function onSendReply()
-    {
-        $recipientId = post('recipientId');
-        $messageContent = post('messageContent');
-        $senderId = Auth::getUser()->id;
-    
-        Messages::createMessage($senderId, $recipientId, $messageContent);
-    
-        Flash::success('Message successfully sent!');
-        $this->page['modalVisible'] = false;
-    
-        $this->page['messages'] = $this->getMessages();
-        return $this->renderPartial('inbox/default');
-    }
-
     public function onReplyMessage()
     {
-        $recipientId = post('recipientId');
+        $messageId = post('messageId');
         $messageContent = post('messageContent');
-        $senderId = Auth::getUser()->id;
-    
-        Messages::createMessage($senderId, $recipientId, $messageContent);
-    
-        Flash::success('Message successfully sent!');
-        $this->page['modalVisible'] = false;
-    
-        $this->page['messages'] = $this->getMessages();
-        return $this->renderPartial('inbox/default');
+
+        $message = Messages::find($messageId);
+
+        if ($message) {
+            $senderId = Auth::getUser()->id;
+            $recipientId = $message->sender_id;
+
+            Messages::createMessage($senderId, $recipientId, $messageContent);
+
+            Flash::success('Message deleted successfully!');
+        }
+        return redirect()->refresh();
     }
-    
 }

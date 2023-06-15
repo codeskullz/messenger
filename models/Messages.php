@@ -44,6 +44,7 @@ class Messages extends Model
         $message->sender_id = $senderId;
         $message->recipient_id = $recipientId;
         $message->content = $content;
+        $message->is_read = 0;
         $message->save();
 
         return $message;
