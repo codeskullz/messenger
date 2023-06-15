@@ -100,7 +100,7 @@ class Inbox extends ComponentBase
 
             Messages::createMessage($senderId, $recipientId, $messageContent);
 
-            Flash::success('Message deleted successfully!');
+            Flash::success('Message send successfully!');
         }
         return redirect()->refresh();
     }

@@ -7,24 +7,29 @@
     <div class="alert alert-success">{{ flashMessage }}</div>
     {% endif %}
     {% if messages %}
-
     <ul class="list-group list-group-flush">
         {% for message in messages %}
+
+
         <li class="list-group-item">
+            <h5><strong>{{ message.created_at }}</strong> From {{ message.sender_name }}</h5>
             {% if not message.is_read %}
-            <a type="submit" data-request="onReadMessage" data-request-data="messageId: {{ message.id }}" href=""><i
-                    class="bi bi-check-lg"></i>
-            </a>
+            <button type="submit" data-request="onReadMessage" data-request-data="messageId: {{ message.id }}"
+                type="button" class="btn btn-light"><i class="bi bi-check-lg"></i> Mark as read
+            </button>
             {% endif %}
-            <a href="" data-request="onDeleteMessage" data-request-data="messageId: {{ message.id }}"
-                data-request-confirm="Are you sure you want to delete this message?"><i class="bi bi-trash3"></i>
-            </a>
+            <button type="button" class="btn btn-light" data-request="onDeleteMessage"
+                data-request-data="messageId: {{ message.id }}"
+                data-request-confirm="Are you sure you want to delete this message?"><i class="bi bi-trash3"></i> Delete
+                message
+            </button>
+            <br>
 
-            <strong>{{ message.created_at }}</strong> From {{ message.sender_name }} <br> <strong>Message:</strong>
-
+            <strong>Message:</strong>
             <i>{{
                 message.content|raw
                 }}</i>
+
             {% if showReplyFields %}
             <form method="post" data-request="{{ onReplyMessage }}">
                 <input type="hidden" name="messageId" value="{{ message.id }}">
