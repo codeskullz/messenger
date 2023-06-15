@@ -13,16 +13,16 @@
 
         <li class="list-group-item">
             <h5><strong>{{ message.created_at }}</strong> From {{ message.sender_name }}</h5>
-            {% if not message.is_read %}
-            <button type="submit" data-request="onReadMessage" data-request-data="messageId: {{ message.id }}"
-                type="button" class="btn btn-light"><i class="bi bi-check-lg"></i> Mark as read
-            </button>
-            {% endif %}
             <button type="button" class="btn btn-light" data-request="onDeleteMessage"
                 data-request-data="messageId: {{ message.id }}"
                 data-request-confirm="Are you sure you want to delete this message?"><i class="bi bi-trash3"></i> Delete
                 message
             </button>
+            {% if not message.is_read %}
+            <button type="submit" data-request="onReadMessage" data-request-data="messageId: {{ message.id }}"
+                type="button" class="btn btn-light"><i class="bi bi-check-lg"></i> Mark as read
+            </button>
+            {% endif %}
             <br>
 
             <strong>Message:</strong>
