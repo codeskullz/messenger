@@ -1,18 +1,27 @@
+<!-- 
+this code was written by Niels van den Dries (NvandenDries.nl) for OctoberCMS v3, 
+if you want more info about this plugin you can reach me at niels@nvandendries.nl
+-->
+
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><a href="<?= Backend::url('nielsvandendries/messenger/messages') ?>">Messages</a></li>
-        <li><?= e($this->pageTitle) ?></li>
-    </ul>
+<ul>
+    <li><a href="<?= Backend::url('nielsvandendries/messenger/messages') ?>">Messages</a></li>
+    <li>
+        <?= e($this->pageTitle) ?>
+    </li>
+</ul>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
 
-    <div class="form-preview">
-        <?= $this->formRenderPreview() ?>
-    </div>
+<div class="form-preview">
+    <?= $this->formRenderPreview() ?>
+</div>
 
 <?php else: ?>
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+<p class="flash-message static error">
+    <?= e($this->fatalError) ?>
+</p>
 <?php endif ?>
 
 <p>
