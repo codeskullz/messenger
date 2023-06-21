@@ -7,3 +7,5 @@
     - 'Translate to english'
 1.0.4:
     - "Added Notification Component with message counter"
+1.0.5:
+    - "Added collapsable inbox items"
