@@ -10,8 +10,10 @@ if you want more info about this plugin you can reach me at niels@nvandendries.n
 <div class="alert alert-success">{{ flashMessage }}</div>
 {% endif %}
 
-<section is="inbox" class="mt-2" show-reply-fields="{{ true }}">
-    <h3>Inbox</h3>
+<section class="border mt-2" id="inbox" class="mt-2" show-reply-fields="{{ true }}">
+    <div class="container-fluid">
+        <h3>Inbox</h3>
+    </div>
     {% if messages %}
     {% for message in messages %}
     <div class="accordion accordion-flush" id="accordionInbox{{ message.id }}">
@@ -19,17 +21,21 @@ if you want more info about this plugin you can reach me at niels@nvandendries.n
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapse{{ message.id }}" aria-expanded="true" aria-controls="collapseOne">
-                    <h4><strong><i class="bi bi-calendar2-event"></i> {{ message.created_at }}</strong>: Message From {{
-                        message.sender_name }}</h4>
+                    <h5><strong><i class="bi bi-calendar2-event"></i> {{ message.created_at }}</strong>: Message From {{
+                        message.sender_name }}</h5>
                 </button>
             </h2>
             <div id="collapse{{ message.id }}" class="accordion-collapse collapse"
                 data-bs-parent="#accordionInbox{{ message.id }}">
-                <div class="accordion-body border">
-                    <strong><i class="bi bi-card-text"></i> Message:</strong>
-                    <div><i>{{ message.content|raw }}</i></div>
+                <div class="accordion-body">
+                    <div class="input-group">
+                        <textarea class="form-control" readonly>{{ message.content|raw }}</textarea>
+                    </div>
+                    <hr>
                     {% if showReplyFields %}
-                    <form method="post" data-request="{{ onReplyMessage }}">
+                    <strong><i class="bi bi-card-text"></i> Send a reply message back to "{{ message.sender_name
+                        }}":</strong>
+                    <form class="mb-1" method="post" data-request="{{ onReplyMessage }}">
                         <input type="hidden" name="messageId" value="{{ message.id }}">
                         <div class="input-group">
                             <textarea class="form-control" name="messageContent" rows="2"
