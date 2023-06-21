@@ -18,3 +18,13 @@ columns:
         type: datetime
         searchable: true
         sortable: true
+    sender_name:
+        label: Sender
+        type: text
+        searchable: true
+        sortable: true
+    recipient_name:
+        label: Recipient
+        type: text
+        searchable: true
+        sortable: true

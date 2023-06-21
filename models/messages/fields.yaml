@@ -9,16 +9,16 @@ fields:
         span: auto
         readOnly: 1
         type: switch
-    sender_id:
-        label: 'Sender id'
-        span: auto
-        readOnly: 1
+    sender_name:
+        label: 'Sender'
         type: text
-    recipient_id:
-        label: 'Recipient id'
         span: auto
-        readOnly: 1
+        disabled: true
+    recipient_name:
+        label: 'Recipient'
         type: text
+        span: auto
+        disabled: true
     content:
         label: Content
         size: small

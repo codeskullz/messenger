@@ -1,6 +1,7 @@
 <?php namespace NielsVanDenDries\Messenger\Models;
 
 use Model;
+use RainLab\User\Models\User;
 
 /**
  * Model
@@ -46,6 +47,28 @@ class Messages extends Model
         $message->content = $content;
         $message->is_read = 0;
         $message->save();
+
+        return $message;
+    }
+    
+    public $belongsTo = [
+        'sender' => ['RainLab\User\Models\User', 'key' => 'sender_id'],
+        'recipient' => ['RainLab\User\Models\User', 'key' => 'recipient_id'],
+    ];
+
+    public static function findWithNames($messageId)
+    {
+        $message = self::with(['sender', 'recipient'])->find($messageId);
+
+        if (!$message) {
+            return null;
+        }
+
+        $senderName = $message->sender ? $message->sender->name : 'Unknown sender';
+        $recipientName = $message->recipient ? $message->recipient->name : 'Unknown recipient';
+
+        $message->sender_name = $senderName;
+        $message->recipient_name = $recipientName;
 
         return $message;
     }
