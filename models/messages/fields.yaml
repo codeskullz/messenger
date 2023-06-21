@@ -1,0 +1,39 @@
+fields:
+    id:
+        label: Id
+        span: auto
+        readOnly: 1
+        type: number
+    is_read:
+        label: 'Is read'
+        span: auto
+        readOnly: 1
+        type: switch
+    sender_id:
+        label: 'Sender id'
+        span: auto
+        readOnly: 1
+        type: text
+    recipient_id:
+        label: 'Recipient id'
+        span: auto
+        readOnly: 1
+        type: text
+    content:
+        label: Content
+        size: small
+        span: full
+        readOnly: 1
+        type: textarea
+    created_at:
+        label: 'Created at'
+        span: auto
+        mode: datetime
+        readOnly: 1
+        type: datepicker
+    updated_at:
+        label: 'Updated at'
+        mode: datetime
+        span: auto
+        readOnly: 1
+        type: datepicker

@@ -11,11 +11,11 @@
     {% endflash %}
 
     <div class="row">
-        <h3>Send a Message</h3>
+        <h3><i class="bi bi-send-plus"></i> Send a Message</h3>
         <form method="POST" data-request="onSendMessage">
             {{ form_token() }}
             <div class="form-group">
-                <label for="recipient_id">Recipient</label>
+                <label for="recipient_id"><i class="bi bi-person-add"></i> Recipient:</label>
                 <select name="recipient_id" class="form-control">
                     {% for user in users %}
                     <option value="{{ user.id }}">{{ user.name }}</option>
@@ -23,7 +23,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="message_content">Message</label>
+                <label for="message_content"><i class="bi bi-envelope-plus"></i> Message:</label>
                 <textarea name="message_content" class="form-control" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Send message</button>

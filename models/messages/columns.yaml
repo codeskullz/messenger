@@ -1,0 +1,20 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    is_read:
+        label: is_read
+        type: switch
+        searchable: true
+        sortable: true
+    created_at:
+        label: created_at
+        type: datetime
+        searchable: true
+        sortable: true
+    updated_at:
+        label: updated_at
+        type: datetime
+        searchable: true
+        sortable: true
