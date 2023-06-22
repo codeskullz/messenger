@@ -14,7 +14,6 @@ if you want more info about this plugin you can reach me at niels@nvandendries.n
     <div class="container-fluid">
         <h3>Inbox</h3>
     </div>
-    {% if messages %}
     {% for message in messages %}
     <div class="accordion accordion-flush" id="accordionInbox{{ message.id }}">
         <div class="accordion-item">
@@ -60,6 +59,10 @@ if you want more info about this plugin you can reach me at niels@nvandendries.n
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="container-fluid">
+        <p>No messages</p>
+    </div>
     {% endfor %}
-    {% endif %}
+
 </section>
